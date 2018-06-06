@@ -8,7 +8,7 @@ using System.Data;
 
 namespace MicroMySQLSharp
 {
-    public static class MicroMySQLSharp
+    public static class MicroMySQL
     {
         /// <summary>
         /// Initializes its static Instance.
@@ -33,14 +33,14 @@ namespace MicroMySQLSharp
         /// <summary>
         /// Execute SQL query without responses, such as CREATE, UPDATE, INSERT, DELETE.
         /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static bool ExecuteNonQuery(string s)
+        /// <param name="query"></param>
+        /// <returns>Returns true on success.</returns>
+        public static bool ExecuteNonQuery(string query)
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(_connstr))
-                using (MySqlCommand cmd = new MySqlCommand(s, conn))
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     conn.Open();
                     cmd.ExecuteNonQuery();
